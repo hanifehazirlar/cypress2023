@@ -20,7 +20,8 @@ describe('SuperDomain',()=>{
         cy.visit('https://www.google.com/')
         cy.wait(3000)
         cy.visit('https://www.amazon.com/')
-        //ayri sayfalar eski surumlerde gitmiyordu ama yeni surumde gidiyor.Bu yuzden biz hata almadik
+        //ayri sayfalar eski surumlerde gitmiyordu ama yeni surumde gidiyor.
+        //Bu yuzden biz hata almadik cypress altyapisi buna uygun olmadigi icin incele yapilamiyor
 
     })
 })
