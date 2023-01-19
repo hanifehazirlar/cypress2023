@@ -76,9 +76,16 @@ describe('Check Boxes',()=>{
 
     })
     it.only('All CheckBoxes 2',()=>{
-        cy.visit('https://www.amazon.com')
-        cy.get('[href="/gp/goldbox?ref_=nav_cs_gb"]').click();
+        cy.visit('https://the-internet.herokuapp.com/checkboxes');
         cy.get('input[type="checkbox"]').click({ multiple: true })
+        //click() methodu normalde tek bir web elemente tiklar
+        //click({ multiple: true }) bu sekilde yazdigimizda verilen locateteki tum elementlere tiklar
+        cy.get('input[type="checkbox"]').first().should('have.attr','checked')
+        //ustteki kod da verilen locatin birncisinin locatetinde class attributunun adi checked mi diye sorguladik
+
+        cy.get('input[type="checkbox"]').should('have.attr','checked')
+        //ustteki kod da verilen tum locatelerin locatinde class attributunun adlari checked mi diye sorguladik
+
 
 
     })
