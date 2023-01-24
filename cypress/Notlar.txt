@@ -1,0 +1,83 @@
+****Tum Testleri Calistirma******
+terminale npx cypress run komutu yazinca tum klasorlerdeki testleri calistirip 
+fail pass verenleri tek tek yazdiriyor.Ayrica her testin videosunu aliyor.
+Ayrica hata aldigi testlerin de screenshot unu aliyor
+
+*******File Upload (Dosya yukleyebilmek)***********
+icin once plugin yuklememiz gerekiyor
+    1) https://www.npmjs.com/package/cypress-file-upload bu adrese git
+    2) Terminale npm install --save-dev cypress-file-upload bu kodu yapistir ve enter
+    3) support/e2e.js 'e    import 'cypress-file-upload';   bu kodu ekle
+    4) yukleyecegimiz dosyalari once fixtures klasorune ekliyoruz
+    5) cy.get(yuklenecek yerin locate).attachFile(pathOfFile1) methodunun icine yukleyecegimiz dosya yolunu ekliyoruz
+
+****baseUrl Tanimlama*******************************************
+1) cypress.config.js dosyasina baseUrl :"https://www.google.com" bu sekilde yazdik
+2) testlerimizin icinde cy.visit('/') yazdigimizda baseUrl de tanimladigimiz adrese gidiyor
+
+*********Testlerimizi Calistiracagimiz Browser'lari Gormek****
+1) Terminale npx cypress info bu komutu yaziyoruz enter
+2) Gelen sonuclar icinde bilgisayarimizdaki browserlarin isimleri var
+- npx cypress run --browser chrome
+- npx cypress run --browser firefox
+- npxcypress run --browser edge
+3) Burada hangi browserda testlerimizi nasil run edecegimizin komutlari var
+4) biz npx cypress run yazdigimizda default olarak electron da calistiriyor
+5) npx cypress run --browser chrome yazdigimizda testlerimizi chrome da calistiriyor
+
+******************Faker Yukleme***************
+1) https://www.npmjs.com/package/@faker-js/faker bu adrese gidiyoruz 
+2) npm install --save-dev @faker-js/faker bu kodu terminale yapistir ve enter
+3) import { faker } from '@faker-js/faker'; bu komutu classin 2.satirina yapistirdik
+    ve diger classlara yazmamiza gerek yok
+ 4) 3.adimi yapmayip support/e2e.js e require('@faker-js/faker') bu komutu da yapistirsak oluyor 
+
+ ********DropDown************
+  //cy.get('#dropdown').select(2) bu sekilde index ile de calisiyor
+ //cy.get('#dropdown').select('value') bu sekilde value icerigini de yazarak yapabiliriz
+ //cy.get('#dropdown').select('visibility text') gorunen isimlerden istedigimizi yazabilir
+
+ *******DashboardOlusturma(Uzaktan Test Calistirma)******
+ 1)Terminale npx cypress open yazdiktan sonra acilan sayfada 
+ sag ust kosedeki login e tikliyoruz
+ 2)Gelen kutucukda login i tikliyoruz)
+ 3)Acilan browserda  google hesabiyla giris yapistirdik, gelenlerin hepsini tikledik
+ 4)Dashboarda istedigimiz bir isim verdik.Create Project sayfasina geldik projemize isim verdik ve 
+ private veyz public sectik ve create project butonuna bastik
+ 5)You're almost set up to see your test results bu sayfaya geldik
+ buradaki cypress.config.js file gosterilen kodu(projectId: "zdhnou") yapistirdik
+ 6)Yukaridaki projectID nin altindaki Record Key valusunu aldik ve asagidaki gibi terminale yapistirdik
+ Terminal-->New terminal yaptik ve terminale npx cypress run --record --key 90edf45a-26ed-4aea-8742-f4035cdebe49
+ bu kodu yapistirdik ve enter a basiyoruz.Bu sekilde (default browser)electronda uzak sunucuda projemizdeki 
+ butun testlerimiz calismaya basliyor
+ 7)Testler bittikten sonra degisik raporlamalar gorebiliriz.Video,scrennshot...
+ 8)Testlerimizi dashboard da calistiracagimiz zaman uzun uzun yukaridaki kodu yazmak istemezsek package.json file ina 
+ "test-dasboard":"npx cypress run --record --key 90edf45a-26ed-4aea-8742-f4035cdebe49",
+ npm run test_dashboard => bütün testlerim çalişip dashboarda gönderilecek
+
+ "dashboard_day02":"npx cypress run --spec 'cypress/e2e/day02/' --record --key 90edf45a-26ed-4aea-8742-f4035cdebe49"
+ npm run dashboard_day02 => sadece day02 klasöründeki testler çalişacak ve dashboarda gönderilecek
+ bu sekilde tanimlamalar yapiyoruz
+
+
+ *******POM*******
+ 1)fixtures file a json uzantili dosya actik.Bu dosya sayesinde surekli kullanacagimiz datalari 
+ bu dosyaya ekledik(configuration.properties gibi)
+ 2) ornek;  paylinn.json file ini olusturduk asagidaki gibi
+ {
+    "url": "https://paylinn.com/",
+    "userName": "User",
+    "passWord": "user"
+}
+3) 04_PaylinnBank.cy.js file gittik.
+descrition in icine asagidakini olusturduk
+before(function(){
+        cy.fixture('paylinn').then(function(data){
+            this.data=data
+        })
+4) Testimizin icinde asagidaki gibi cagirdik
+cy.visit(this.data.url)
+
+
+
+  

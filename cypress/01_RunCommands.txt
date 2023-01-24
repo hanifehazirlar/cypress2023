@@ -1,0 +1,65 @@
+npx cypress run: Electron headless (browser'i açmadan) ile bütün testleri çaliştirir.
+                 Hata alinan testlerin ekran görüntülerini screeashots klasörüne koyar
+                 Bütün testlerin video kayitlarini videos klasörüne koyar.
+
+npx cypress info: Bilgisayarinizda yüklü browser bilgilerini, cypress versionunu,
+                  işletim sistemini, hafiza bilgileri gibi verileri gösterir.
+
+npx cypress verify: Cypress'in yüklü olduğunu onaylar
+
+npx cypress run --browser chrome: Chrome headless(browser'i açmadan) ile bütün testleri çaliştirir.
+
+npx cypress run --browser chrome --headed: Chrome browser'i açarak bütün testleri çaliştirir.
+
+İSTENEN KLASÖRDEKİ TÜM TESTLERİ ÇALIŞTIRMAK
+npx cypress run --spec 'cypress/e2e/day02/'
+* Default olarak Electron ile çaliştirir.
+
+npx cypress run --spec 'cypress/e2e/day02/' --browser chrome
+*day02 klasörüğndeki bütün testleri Chrome headless (browser açmadan) ile çaliştirir.
+
+npx cypress run --spec 'cypress/e2e/day02/' --browser chrome --headed
+*day02 klasöründeki bütün testleri Chrome browser'i açarak çaliştirir.
+
+
+TEK BİR TESTİ ÇALIŞTIRMAK
+
+npx cypress run --spec 'cypress/e2e/day02/01_LoginTest1.cy.js'
+* Default olarak Electron ile çaliştirir.
+
+npx cypress run --spec 'cypress/e2e/day02/01_LoginTest1.cy.js' --browser chrome
+*day02 klasörüğndeki 01_LoginTest1.cy.js' dosyasini Chrome headless (browser açmadan) ile çaliştirir.
+
+npx cypress run --spec 'cypress/e2e/day02/01_LoginTest1.cy.js' --browser chrome --headed
+*day02 klasörüğndeki 01_LoginTest1.cy.js' dosyasini Chrome browser'i açarak çaliştirir.
+
+
+ÇALIŞTIRMAK İÇİN KOD TANIMLAMA
+PACKAGE.JSON dosyasi içerisindeki script bölümüne kendimizin belirleyeceği çaliştirma komutlari ekleyebiliriz
+
+"day02Chrome": "npx cypress run --spec 'cypress/e2e/day02/' --browser chrome"
+TERMİNALE: npm run day02Chrome
+
+"day02ChromeHeaded": "npx cypress run --spec 'cypress/e2e/day02/' --browser chrome --headed",
+
+"day02ChromeHeaded" diye bir komut tanimlamiş olduk
+
+Oluşturduğumuz bu komutu terminalde şu şekilde çaliştiracağiz.
+
+TERMİNALDE: npm run day02ChromeHeaded
+
+"test-dashboard" : "npx cypress run --record --key 90edf45a-26ed-4aea-8742-f4035cdebe49",
+npm run test_dashboard => bütün testlerim çalişip dashboarda gönderilecek
+
+
+
+
+"dashboard_day02": "npx cypress run --spec 'cypress/e2e/day02/' --record --key 90edf45a-26ed-4aea-8742-f4035cdebe49"
+npm run dashboard_day02 => sadece day02 klasöründeki testler çalişacak ve dashboarda gönderilecek
+
+
+BİRDEN FAZLA BROWSERDA TESTLERİ ÇALIŞTIRMAK İÇİN
+1) 2 tane terminal açiyoruyz
+2) 1. terminale npx cypress run --spec 'cypress/e2e/day02/' --browser chrome --headed
+3) 2. terminale npx cypress run --spec 'cypress/e2e/day02/' --browser firefox --headed
+4) 2 terminalde de entera bas

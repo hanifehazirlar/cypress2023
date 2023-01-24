@@ -1,10 +1,16 @@
 {
-  "name": "cypress2022",
+  "name": "cypress2023",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "day02Chrome": "npx cypress run --spec 'cypress/e2e/day02/' --browser chrome",
+    "day02ChromeHeaded": "npx cypress run --spec 'cypress/e2e/day02/' --browser chrome --headed",
+    "test-dasboard":"npx cypress run --record --key 90edf45a-26ed-4aea-8742-f4035cdebe49",
+    "dashboard_day02":"npx cypress run --spec 'cypress/e2e/day02/' --record --key 90edf45a-26ed-4aea-8742-f4035cdebe49"
+
+  
   },
   "repository": {
     "type": "git",
@@ -17,8 +23,11 @@
   },
   "homepage": "https://github.com/hanifehazirlar/cypress2023#readme",
   "devDependencies": {
+    "@4tw/cypress-drag-drop": "^2.2.3",
     "@cypress/xpath": "^2.0.3",
+    "@faker-js/faker": "^7.6.0",
     "cypress": "^12.3.0",
+    "cypress-file-upload": "^5.0.8",
     "cypress-iframe": "^1.0.1"
   }
 }

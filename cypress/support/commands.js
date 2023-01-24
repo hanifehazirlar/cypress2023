@@ -23,3 +23,19 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+//https://hubcomfy.com/ sitesine login icin
+Cypress.Commands.add('hubcomfy_login',(email,password) =>{
+    cy.visit('https://hubcomfy.com/')
+    cy.get('.login > span').click()
+    cy.get('#username').type(email)
+    cy.get('#password').type(password)
+    cy.get('#signin > .woocommerce-form > .woocommerce-button').click()
+})
+
+//amazon search: girilen urun icin arama
+Cypress.Commands.add('amazonSearch', (productName) =>{
+ cy.visit('https://www.amazon.com/')
+ cy.get('#twotabsearchtextbox').type(productName)
+ cy.get('#nav-search-submit-button').click()
+})
