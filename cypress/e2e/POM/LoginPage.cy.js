@@ -11,5 +11,9 @@ class LoginPage{
     getWelcomeText(){
         return cy.get('.header__nav > :nth-child(1) > .header__lineOne')
     }
+    getHeader(){
+        return cy.get('.header__nav')
+    }
+
 }
 export default LoginPage

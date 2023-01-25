@@ -19,6 +19,10 @@ describe('Paylinn Bank',()=>{
         loginPage.getPasswordBox().type(this.data.passWord)
         loginPage.getLoginButton().click()
         loginPage.getWelcomeText().should('contain.text','Welcome')
-
+        loginPage.getHeader().should('contain.text','Welcome')
+                             .and('contain.text','Logout')
+                             .and('contain.text','React User')
+        //ayni locate ait webelementleri and() ekleyerek toplu dogrulama yapabiliriz.
+        //LoginPage de tanimladigimiz getHeader() methodunda oratk tek bir locate aldik ve bununla toplu dogrulama yaptik.                     
     })
 })
