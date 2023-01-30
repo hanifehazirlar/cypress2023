@@ -29,6 +29,8 @@ describe('POST With Auth',()=>{
             expect(response.body.booking.lastname).to.equal("Gul")
             expect(response.body.booking.totalprice).to.equal(230)
             expect(response.body.booking.bookingdates.checkin).to.equal("2023-02-01")
+            expect(response.body.booking.bookingdates.checkout).to.equal("2023-02-10")
+            expect(response.body.booking.additionalneeds).to.equal("Breakfast")
         })
     })
 })

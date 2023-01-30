@@ -58,8 +58,8 @@ npm run test_dashboard => bütün testlerim çalişip dashboarda gönderilecek
 npm run dashboard_day02 => sadece day02 klasöründeki testler çalişacak ve dashboarda gönderilecek
 
 
-BİRDEN FAZLA BROWSERDA TESTLERİ ÇALIŞTIRMAK İÇİN
-1) 2 tane terminal açiyoruyz
+BİRDEN FAZLA BROWSERDA(Multi Browser Test) TESTLERİ ÇALIŞTIRMAK İÇİN(Paralel Cross Browser)
+1) 2 tane terminal açiyoruyz(terminal kisminda(sag ust) + isaretine basiyoruz)
 2) 1. terminale npx cypress run --spec 'cypress/e2e/day02/' --browser chrome --headed
 3) 2. terminale npx cypress run --spec 'cypress/e2e/day02/' --browser firefox --headed
 4) 2 terminalde de entera bas
